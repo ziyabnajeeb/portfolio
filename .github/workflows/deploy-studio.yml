@@ -12,8 +12,14 @@ jobs:
     name: Deploy Sanity Studio
     runs-on: ubuntu-latest
     env:
+      # sanity.cli.ts reads NEXT_PUBLIC_* to know which project to deploy to.
       NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
       NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET }}
+      # The Studio's browser bundle only auto-inlines SANITY_STUDIO_* — without
+      # these, the deployed app throws "Missing SANITY_STUDIO_PROJECT_ID" at
+      # runtime even though the deploy itself succeeds.
+      SANITY_STUDIO_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
+      SANITY_STUDIO_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET }}
       SANITY_AUTH_TOKEN: ${{ secrets.SANITY_API_TOKEN }}
     steps:
       - name: Checkout
