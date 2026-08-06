@@ -85,8 +85,8 @@ const about = {
   headline: 'About Me',
   bio: blocks(
     "I'm a Senior UI/UX Engineer with over 14 years of experience building scalable, responsive web applications — from early jQuery and HTML5/CSS3 work to modern React, Next.js, and TypeScript architectures.",
-    "Most of that time has been spent inside Salesforce Commerce Cloud (SFRA/SiteGenesis), optimizing storefront performance and user experience for enterprise eCommerce clients, alongside full-stack MERN projects built with Express.js, Hono.js, and MongoDB.",
-    'I care about clean component architecture, functional programming practices, and interfaces that are as fast as they are polished — working across design systems like Tailwind CSS, shadcn/ui, React Bootstrap, and Material UI, with Photoshop, Illustrator, and Adobe XD rounding out the workflow from wireframe to shipped product.'
+    "Most of that time has been spent inside Salesforce Commerce Cloud (SFRA/SiteGenesis), optimizing storefront performance and user experience for enterprise eCommerce clients, alongside full-stack MERN projects built with Express.js and MongoDB.",
+    'I care about clean component architecture, functional programming practices, and interfaces that are as fast as they are polished — working across design systems like Tailwind CSS, shadcn/ui, React Bootstrap, and Material UI, with Photoshop and Illustrator rounding out the workflow from wireframe to shipped product.'
   ),
   philosophy: blocks(
     'Good frontend engineering should be invisible — it just feels fast, clear, and trustworthy. I favor efficient RESTful APIs, functional programming patterns, and design systems that keep a codebase consistent as it scales, and I like adapting quickly to whatever stack a project actually calls for.'
@@ -169,14 +169,12 @@ const skills = [
   // Backend
   { name: 'Node.js', icon: 'nodejs', category: 'skillCategory-backend' },
   { name: 'Express.js', icon: 'express', category: 'skillCategory-backend' },
-  { name: 'Hono.js', icon: 'hono', category: 'skillCategory-backend' },
   { name: 'MongoDB', icon: 'mongodb', category: 'skillCategory-backend' },
   // Platforms
   { name: 'Salesforce Commerce Cloud (SFRA)', icon: 'salesforce', category: 'skillCategory-platforms' },
   // Design Tools
   { name: 'Photoshop', icon: 'photoshop', category: 'skillCategory-design-tools' },
   { name: 'Illustrator', icon: 'illustrator', category: 'skillCategory-design-tools' },
-  { name: 'Adobe XD', icon: 'adobexd', category: 'skillCategory-design-tools' },
   // Tools & Workflow
   { name: 'Git', icon: 'git', category: 'skillCategory-tools' },
   { name: 'Webpack', icon: 'webpack', category: 'skillCategory-tools' },

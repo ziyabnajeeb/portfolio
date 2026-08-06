@@ -44,9 +44,9 @@ Flagged with **⚠️** wherever I made a judgment call or need something from y
 
 > I'm a Senior UI/UX Engineer with over 14 years of experience building scalable, responsive web applications — from early jQuery and HTML5/CSS3 work to modern React, Next.js, and TypeScript architectures.
 >
-> Most of that time has been spent inside Salesforce Commerce Cloud (SFRA/SiteGenesis), optimizing storefront performance and user experience for enterprise eCommerce clients, alongside full-stack MERN projects built with Express.js, Hono.js, and MongoDB.
+> Most of that time has been spent inside Salesforce Commerce Cloud (SFRA/SiteGenesis), optimizing storefront performance and user experience for enterprise eCommerce clients, alongside full-stack MERN projects built with Express.js and MongoDB.
 >
-> I care about clean component architecture, functional programming practices, and interfaces that are as fast as they are polished — working across design systems like Tailwind CSS, shadcn/ui, React Bootstrap, and Material UI, with Photoshop, Illustrator, and Adobe XD rounding out the workflow from wireframe to shipped product.
+> I care about clean component architecture, functional programming practices, and interfaces that are as fast as they are polished — working across design systems like Tailwind CSS, shadcn/ui, React Bootstrap, and Material UI, with Photoshop and Illustrator rounding out the workflow from wireframe to shipped product.
 
 **Engineering Philosophy** (portable text):
 
@@ -88,13 +88,13 @@ Create categories first, then skills referencing them. `icon` is a free-text key
 `React` (react) · `Next.js` (nextjs) · `TypeScript` (typescript) · `JavaScript` (javascript) · `HTML5` (html5) · `CSS3` (css3) · `Sass/SCSS` (sass) · `Tailwind CSS` (tailwindcss) · `Material UI` (materialui) · `React Bootstrap` (bootstrap) · `Bootstrap 5` (bootstrap)
 
 ### 2. Backend
-`Node.js` (nodejs) · `Express.js` (express) · `Hono.js` (hono) · `MongoDB` (mongodb)
+`Node.js` (nodejs) · `Express.js` (express) · `MongoDB` (mongodb)
 
 ### 3. Platforms
 `Salesforce Commerce Cloud (SFRA)` (salesforce)
 
 ### 4. Design Tools
-`Photoshop` (photoshop) · `Illustrator` (illustrator) · `Adobe XD` (adobexd)
+`Photoshop` (photoshop) · `Illustrator` (illustrator)
 
 ### 5. Tools & Workflow
 `Git` (git) · `Source Tree` (sourcetree) · `Webpack` (webpack) · `npm` (npm) · `GSAP` (gsap)
