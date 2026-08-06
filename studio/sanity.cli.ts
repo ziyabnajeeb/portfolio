@@ -5,4 +5,8 @@ export default defineCliConfig({
     projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
     dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
   },
+  studioHost: "ziyabnajeeb",
+  deployment: {
+    appId: "gfon1w7f3nbbbybh47i0dgde",
+  },
 });
