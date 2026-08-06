@@ -6,7 +6,7 @@
     "dev": "sanity dev",
     "build": "sanity build",
     "start": "sanity start",
-    "seed": "node --env-file=.env.local scripts/seed-content.mjs"
+    "seed": "node --env-file=.env.local --env-file=.env scripts/seed-content.mjs"
   },
   "dependencies": {
     "@sanity/image-url": "^2.1.1",
