@@ -1,0 +1,28 @@
+{
+  "name": "portfolio-studio",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "sanity dev",
+    "build": "sanity build",
+    "start": "sanity start",
+    "seed": "node --env-file=.env.local scripts/seed-content.mjs"
+  },
+  "dependencies": {
+    "@sanity/image-url": "^2.1.1",
+    "@sanity/vision": "^6.9.0",
+    "next": "16.2.12",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "sanity": "^6.8.0"
+  },
+  "devDependencies": {
+    "@rolldown/binding-darwin-arm64": "1.2.1",
+    "@sanity/client": "^7.26.2",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "styled-components": "6",
+    "typescript": "^5"
+  }
+}

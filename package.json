@@ -1,26 +1,25 @@
 {
   "name": "portfolio",
-  "version": "0.1.0",
   "private": true,
+  "workspaces": [
+    "web",
+    "studio"
+  ],
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
-  },
-  "dependencies": {
-    "next": "16.2.12",
-    "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "dev": "pnpm -r --parallel dev",
+    "dev:web": "pnpm --filter portfolio-web dev",
+    "dev:studio": "pnpm --filter portfolio-studio dev",
+    "build": "pnpm -r --parallel build",
+    "start": "pnpm -r --parallel start",
+    "lint": "pnpm --filter portfolio-web lint",
+    "clean": "rm -rf node_modules web/node_modules studio/node_modules .next web/.next studio/.next"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.2.12",
-    "tailwindcss": "^4",
+    "next": "16.2.12",
     "typescript": "^5"
+  },
+  "dependencies": {
+    "next-sanity": "^13.2.3"
   }
 }
