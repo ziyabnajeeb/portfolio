@@ -1,6 +1,6 @@
 import { groq } from 'next-sanity'
 
-export const experienceListQuery = groq`*[_type == "experience"] | order(order asc){
+export const experienceListQuery = groq`*[_type == "experience"] | order(orderRank asc){
   _id,
   company,
   companyLogo,
@@ -12,5 +12,5 @@ export const experienceListQuery = groq`*[_type == "experience"] | order(order a
   startDate,
   endDate,
   current,
-  order
+  orderRank
 }`

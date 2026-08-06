@@ -10,13 +10,13 @@ const projectCardFields = groq`
   thumbnail,
   technologies,
   featured,
-  order,
+  orderRank,
   publishedDate
 `
 
-export const featuredProjectsQuery = groq`*[_type == "project" && featured == true] | order(order asc){${projectCardFields}}`
+export const featuredProjectsQuery = groq`*[_type == "project" && featured == true] | order(orderRank asc){${projectCardFields}}`
 
-export const allProjectsQuery = groq`*[_type == "project"] | order(order asc){${projectCardFields}}`
+export const allProjectsQuery = groq`*[_type == "project"] | order(orderRank asc){${projectCardFields}}`
 
 export const projectSlugsQuery = groq`*[_type == "project"]{"slug": slug.current}`
 
@@ -39,11 +39,11 @@ export const projectBySlugQuery = groq`*[_type == "project" && slug.current == $
   technologies,
   githubUrl,
   liveUrl,
-  order,
+  orderRank,
   publishedDate
 }`
 
 export const adjacentProjectsQuery = groq`{
-  "prev": *[_type == "project" && order < $order] | order(order desc)[0]{ title, "slug": slug.current },
-  "next": *[_type == "project" && order > $order] | order(order asc)[0]{ title, "slug": slug.current }
+  "prev": *[_type == "project" && orderRank < $orderRank] | order(orderRank desc)[0]{ title, "slug": slug.current },
+  "next": *[_type == "project" && orderRank > $orderRank] | order(orderRank asc)[0]{ title, "slug": slug.current }
 }`

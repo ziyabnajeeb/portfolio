@@ -4,11 +4,11 @@ import { Icons } from "@/components/icons";
 import type { AdjacentProjects } from "@/types";
 
 interface ProjectNavigationProps {
-  order: number;
+  orderRank: string;
 }
 
-export async function ProjectNavigation({ order }: ProjectNavigationProps) {
-  const adjacent = await sanityFetch<AdjacentProjects>(adjacentProjectsQuery, { params: { order } });
+export async function ProjectNavigation({ orderRank }: ProjectNavigationProps) {
+  const adjacent = await sanityFetch<AdjacentProjects>(adjacentProjectsQuery, { params: { orderRank } });
 
   if (!adjacent.prev && !adjacent.next) return null;
 

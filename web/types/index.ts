@@ -76,20 +76,20 @@ export interface Experience {
   startDate: string
   endDate?: string
   current: boolean
-  order: number
+  orderRank: string
 }
 
 export interface Skill {
   _id: string
   name: string
   icon: string
-  order: number
+  orderRank: string
 }
 
 export interface SkillCategory {
   _id: string
   title: string
-  order: number
+  orderRank: string
   skills: Skill[]
 }
 
@@ -111,7 +111,7 @@ export interface ProjectCard {
   thumbnail: SanityImage
   technologies: string[]
   featured: boolean
-  order: number
+  orderRank: string
   publishedDate?: string
 }
 
@@ -134,7 +134,7 @@ export interface ProjectDetail {
   technologies: string[]
   githubUrl?: string
   liveUrl?: string
-  order: number
+  orderRank: string
   publishedDate?: string
 }
 

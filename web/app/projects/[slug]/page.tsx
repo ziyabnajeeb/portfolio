@@ -57,7 +57,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         </aside>
       </div>
       <div className="mt-16">
-        <ProjectNavigation order={project.order} />
+        <ProjectNavigation orderRank={project.orderRank} />
       </div>
     </Section>
   );

@@ -1,4 +1,5 @@
 import { createClient } from '@sanity/client'
+import { LexoRank } from 'lexorank'
 
 const projectId =
   process.env.SANITY_STUDIO_PROJECT_ID ?? process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
@@ -43,6 +44,18 @@ function blocks(...texts) {
 
 function ref(id) {
   return { _type: 'reference', _ref: id }
+}
+
+// Generates N ascending orderRank strings, matching what
+// @sanity/orderable-document-list uses for drag-and-drop ordering.
+function generateRanks(count) {
+  const ranks = []
+  let rank = LexoRank.middle()
+  for (let i = 0; i < count; i++) {
+    ranks.push(rank.toString())
+    rank = rank.genNext()
+  }
+  return ranks
 }
 
 // ---------------------------------------------------------------------------
@@ -139,22 +152,23 @@ const experienceRoyalCyber = {
   ],
   startDate: '2012-12-01',
   current: true,
-  order: 1,
+  orderRank: generateRanks(1)[0],
 }
 
 // ---------------------------------------------------------------------------
 // Skill categories + skills
 // ---------------------------------------------------------------------------
 
+const skillCategoryRanks = generateRanks(5)
 const skillCategories = [
-  { _id: 'skillCategory-frontend', _type: 'skillCategory', title: 'Frontend', order: 1 },
-  { _id: 'skillCategory-backend', _type: 'skillCategory', title: 'Backend', order: 2 },
-  { _id: 'skillCategory-platforms', _type: 'skillCategory', title: 'Platforms', order: 3 },
-  { _id: 'skillCategory-design-tools', _type: 'skillCategory', title: 'Design Tools', order: 4 },
-  { _id: 'skillCategory-tools', _type: 'skillCategory', title: 'Tools & Workflow', order: 5 },
+  { _id: 'skillCategory-frontend', _type: 'skillCategory', title: 'Frontend', orderRank: skillCategoryRanks[0] },
+  { _id: 'skillCategory-backend', _type: 'skillCategory', title: 'Backend', orderRank: skillCategoryRanks[1] },
+  { _id: 'skillCategory-platforms', _type: 'skillCategory', title: 'Platforms', orderRank: skillCategoryRanks[2] },
+  { _id: 'skillCategory-design-tools', _type: 'skillCategory', title: 'Design Tools', orderRank: skillCategoryRanks[3] },
+  { _id: 'skillCategory-tools', _type: 'skillCategory', title: 'Tools & Workflow', orderRank: skillCategoryRanks[4] },
 ]
 
-const skills = [
+const skillList = [
   // Frontend
   { name: 'React', icon: 'react', category: 'skillCategory-frontend' },
   { name: 'Next.js', icon: 'nextjs', category: 'skillCategory-frontend' },
@@ -180,19 +194,22 @@ const skills = [
   { name: 'Webpack', icon: 'webpack', category: 'skillCategory-tools' },
   { name: 'npm', icon: 'npm', category: 'skillCategory-tools' },
   { name: 'GSAP', icon: 'gsap', category: 'skillCategory-tools' },
-].map((skill, index) => ({
+]
+const skillRanks = generateRanks(skillList.length)
+const skills = skillList.map((skill, index) => ({
   _id: `skill-${skill.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}`,
   _type: 'skill',
   name: skill.name,
   icon: skill.icon,
   category: ref(skill.category),
-  order: index + 1,
+  orderRank: skillRanks[index],
 }))
 
 // ---------------------------------------------------------------------------
 // Projects
 // ---------------------------------------------------------------------------
 
+const projectRanks = generateRanks(7)
 const projects = [
   {
     _id: 'project-filmtastic',
@@ -216,7 +233,7 @@ const projects = [
     ],
     technologies: ['React.js', 'Next.js', 'Puppeteer', 'Tailwind CSS', 'Shadcn UI', 'TypeScript', 'Express.js', 'MongoDB', 'JWT'],
     featured: true,
-    order: 1,
+    orderRank: projectRanks[0],
   },
   {
     _id: 'project-white-cap',
@@ -234,7 +251,7 @@ const projects = [
     keyFeatures: ['Animated, categorized image markers', 'Image-switching with synced marker state', 'GSAP-driven micro-interactions'],
     technologies: ['React.js', 'TypeScript', 'Tailwind CSS', 'Shadcn UI', 'GSAP'],
     featured: true,
-    order: 2,
+    orderRank: projectRanks[1],
   },
   {
     _id: 'project-brambleberry-sfcc',
@@ -251,7 +268,7 @@ const projects = [
     keyFeatures: ['Reusable Google AVS 2.0 & reCAPTCHA components', 'Page Designer authoring', 'Npm/Webpack build pipeline', 'Node 6 → 14 upgrade'],
     technologies: ['Salesforce SFRA', 'jQuery', 'JavaScript', 'HTML5', 'SCSS', 'Bootstrap 4', 'ISML', 'Webpack'],
     featured: false,
-    order: 3,
+    orderRank: projectRanks[2],
   },
   {
     _id: 'project-covid19-dashboard',
@@ -263,7 +280,7 @@ const projects = [
     ),
     technologies: ['React', 'JavaScript (ES6)', 'Tailwind CSS', 'Styled Components', 'Axios', 'Redux'],
     featured: false,
-    order: 4,
+    orderRank: projectRanks[3],
   },
   {
     _id: 'project-memories-app',
@@ -275,7 +292,7 @@ const projects = [
     ),
     technologies: ['React', 'React-Bootstrap', 'Redux', 'Express.js', 'MongoDB', 'Mongoose'],
     featured: false,
-    order: 5,
+    orderRank: projectRanks[4],
   },
   {
     _id: 'project-winzone-intranet',
@@ -287,7 +304,7 @@ const projects = [
     ),
     technologies: ['HTML5', 'CSS3', 'SCSS', 'Angular', 'TypeScript'],
     featured: false,
-    order: 6,
+    orderRank: projectRanks[5],
   },
   {
     _id: 'project-aramark-supplier-marketplace',
@@ -297,7 +314,7 @@ const projects = [
     overview: blocks('Developed the UI from scratch using HTML5, Bootstrap, and SCSS, with jQuery handling client-side scripting.'),
     technologies: ['HTML5', 'Bootstrap', 'SCSS', 'jQuery', 'WebSphere Portal'],
     featured: false,
-    order: 7,
+    orderRank: projectRanks[6],
   },
 ].map((project) => ({
   ...project,

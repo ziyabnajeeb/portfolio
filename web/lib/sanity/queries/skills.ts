@@ -1,13 +1,13 @@
 import { groq } from 'next-sanity'
 
-export const skillCategoriesQuery = groq`*[_type == "skillCategory"] | order(order asc){
+export const skillCategoriesQuery = groq`*[_type == "skillCategory"] | order(orderRank asc){
   _id,
   title,
-  order,
-  "skills": *[_type == "skill" && references(^._id)] | order(order asc){
+  orderRank,
+  "skills": *[_type == "skill" && references(^._id)] | order(orderRank asc){
     _id,
     name,
     icon,
-    order
+    orderRank
   }
 }`
