@@ -20,3 +20,4 @@ export { Tabs, TabsList, TabsTrigger, TabsContent } from './tabs';
 export { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from './accordion';
 export { PortableText } from './portable-text';
 export { PortraitImage } from './portrait-image';
+export { ScrollReveal } from './scroll-reveal';

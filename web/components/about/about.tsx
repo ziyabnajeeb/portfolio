@@ -1,5 +1,6 @@
 import { sanityFetch, aboutQuery, siteSettingsQuery } from "@/lib/sanity";
 import { Section } from "@/components/layout";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { AboutContent } from "./about-content";
 import { AboutImage } from "./about-image";
 import { AboutStats } from "./about-stats";
@@ -15,13 +16,13 @@ export async function About() {
 
   return (
     <Section id="about">
-      <div className="grid gap-12 md:grid-cols-[1fr_1.2fr] md:gap-16">
+      <ScrollReveal className="grid gap-12 md:grid-cols-[1fr_1.2fr] md:gap-16">
         <AboutImage image={about.image} name={siteSettings?.name ?? "About"} />
         <div>
           <AboutContent about={about} />
           {about.stats && about.stats.length > 0 && <AboutStats stats={about.stats} className="mt-10" />}
         </div>
-      </div>
+      </ScrollReveal>
     </Section>
   );
 }

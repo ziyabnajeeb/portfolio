@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
-import { Inter, JetBrains_Mono } from 'next/font/google';
+import { Montserrat, JetBrains_Mono } from 'next/font/google';
 import { ThemeProvider } from 'next-themes';
 import { Header } from '@/components/navigation/header';
 import { Footer } from '@/components/footer';
 import './globals.css';
 
-const inter = Inter({
+const montserrat = Montserrat({
   variable: '--font-sans',
   subsets: ['latin'],
   display: 'swap',
@@ -51,7 +51,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${inter.variable} ${jetbrainsMono.variable}`}
+      className={`${montserrat.variable} ${jetbrainsMono.variable}`}
     >
       <body className="min-h-screen bg-background font-sans antialiased" suppressHydrationWarning>
         <ThemeProvider
