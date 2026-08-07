@@ -15,7 +15,7 @@ export async function About() {
   if (!about) return null;
 
   return (
-    <Section id="about">
+    <Section id="about" background="muted">
       <ScrollReveal className="grid gap-12 md:grid-cols-[1fr_1.2fr] md:gap-16">
         <AboutImage image={about.image} name={siteSettings?.name ?? "About"} />
         <div>

@@ -10,7 +10,7 @@ export async function Experience() {
   if (!experiences || experiences.length === 0) return null;
 
   return (
-    <Section id="experience">
+    <Section id="experience" background="muted">
       <ScrollReveal>
         <SectionHeader title="Experience" description="Where I've worked and what I've built." />
         <div className="mt-12">
