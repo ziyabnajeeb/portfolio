@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { TypographyH1 } from "@/components/typography";
 import { HeroActions } from "./hero-actions";
 import { HeroSocials } from "./hero-socials";
 import type { Hero as HeroData, SiteSettings } from "@/types";
@@ -25,23 +24,25 @@ export function HeroContent({ hero, siteSettings }: HeroContentProps) {
   }, [reduceMotion, hero.roles.length]);
 
   return (
-    <div>
+    <div className="max-w-3xl">
       {hero.greeting && (
-        <p className="text-sm font-medium uppercase tracking-widest text-muted-foreground">
+        <p className="text-sm font-medium uppercase tracking-[0.2em] text-muted-foreground">
           {hero.greeting}
         </p>
       )}
-      <TypographyH1 className="mt-3">{hero.name}</TypographyH1>
-      <div className="mt-2 h-10 overflow-hidden text-xl font-semibold text-primary sm:text-2xl">
+      <h1 className="mt-4 text-5xl font-extrabold leading-[1.05] tracking-tight text-foreground sm:text-6xl md:text-7xl">
+        {hero.name}
+      </h1>
+      <div className="mt-1 h-[1.2em] overflow-hidden text-5xl font-light leading-[1.05] tracking-tight text-muted-foreground sm:text-6xl md:text-7xl">
         {reduceMotion ? (
           <span>{hero.roles[0]}</span>
         ) : (
           <AnimatePresence mode="wait">
             <motion.span
               key={hero.roles[roleIndex]}
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -12 }}
+              exit={{ opacity: 0, y: -16 }}
               transition={{ duration: 0.3 }}
               className="block"
             >
@@ -50,12 +51,12 @@ export function HeroContent({ hero, siteSettings }: HeroContentProps) {
           </AnimatePresence>
         )}
       </div>
-      <p className="mt-6 max-w-xl text-base leading-7 text-muted-foreground sm:text-lg">
+      <p className="mt-8 max-w-xl text-base leading-7 text-muted-foreground sm:text-lg">
         {hero.summary}
       </p>
-      {hero.ctas && hero.ctas.length > 0 && <HeroActions ctas={hero.ctas} className="mt-8" />}
+      {hero.ctas && hero.ctas.length > 0 && <HeroActions ctas={hero.ctas} className="mt-10" />}
       {siteSettings?.socialLinks && siteSettings.socialLinks.length > 0 && (
-        <HeroSocials links={siteSettings.socialLinks} className="mt-8" />
+        <HeroSocials links={siteSettings.socialLinks} className="mt-10" />
       )}
     </div>
   );

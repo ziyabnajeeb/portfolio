@@ -1,7 +1,8 @@
 import { sanityFetch, heroQuery, siteSettingsQuery } from "@/lib/sanity";
-import { Section } from "@/components/layout";
+import { Container } from "@/components/layout";
 import { HeroContent } from "./hero-content";
-import { HeroImage } from "./hero-image";
+import { HeroDecoration } from "./hero-decoration";
+import { HeroScrollCue } from "./hero-scroll-cue";
 import type { Hero as HeroData, SiteSettings } from "@/types";
 
 export async function Hero() {
@@ -13,11 +14,19 @@ export async function Hero() {
   if (!hero) return null;
 
   return (
-    <Section className="pt-24 md:pt-32">
-      <div className="grid items-center gap-12 md:grid-cols-[1.2fr_1fr] md:gap-16">
+    <section className="relative overflow-hidden">
+      <HeroDecoration />
+      <Container className="relative flex min-h-[85vh] flex-col justify-center py-28 md:py-36">
         <HeroContent hero={hero} siteSettings={siteSettings} />
-        <HeroImage hero={hero} />
-      </div>
-    </Section>
+      </Container>
+      <HeroScrollCue />
+      <span
+        className="absolute bottom-8 left-4 hidden -rotate-90 text-xs font-medium tracking-[0.3em] text-muted-foreground/60 uppercase sm:left-6 sm:block lg:left-8"
+        style={{ transformOrigin: "left bottom" }}
+        aria-hidden="true"
+      >
+        Homepage
+      </span>
+    </section>
   );
 }
