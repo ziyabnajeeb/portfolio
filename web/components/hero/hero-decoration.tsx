@@ -1,3 +1,7 @@
+"use client";
+
+import { motion, useReducedMotion } from "framer-motion";
+
 const FACETS = (
   <>
     <polygon points="100,10 175,55 175,145 100,190 25,145 25,55" />
@@ -14,26 +18,33 @@ const FACETS = (
 );
 
 export function HeroDecoration() {
+  const reduceMotion = useReducedMotion();
+
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-      <svg
+      <motion.svg
         viewBox="0 0 200 200"
         fill="none"
         stroke="currentColor"
         strokeWidth="0.5"
-        className="absolute -right-32 top-1/2 h-[500px] w-[500px] -translate-y-1/2 text-foreground/10 md:h-[650px] md:w-[650px]"
+        className="absolute -right-32 top-1/2 h-125 w-125 text-foreground/10 md:h-162.5 md:w-162.5"
+        style={{ translateY: "-50%" }}
+        animate={reduceMotion ? undefined : { rotate: 360 }}
+        transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
       >
         {FACETS}
-      </svg>
-      <svg
+      </motion.svg>
+      <motion.svg
         viewBox="0 0 200 200"
         fill="none"
         stroke="currentColor"
         strokeWidth="0.5"
-        className="absolute -left-20 -top-20 h-[280px] w-[280px] text-foreground/10 md:h-[360px] md:w-[360px]"
+        className="absolute -left-20 -top-20 h-70 w-70 text-foreground/10 md:h-90 md:w-90"
+        animate={reduceMotion ? undefined : { rotate: -360 }}
+        transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
       >
         {FACETS}
-      </svg>
+      </motion.svg>
     </div>
   );
 }
