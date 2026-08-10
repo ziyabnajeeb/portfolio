@@ -23,7 +23,7 @@ export function HeroScrollCue() {
         <defs>
           <path id="hero-scroll-circle" d="M 50,50 m -38,0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" />
         </defs>
-        <text fill="currentColor" fontSize="6.5" letterSpacing="2">
+        <text fill="currentColor" fontSize="7.5" letterSpacing="4" className="uppercase font-bold">
           <textPath href="#hero-scroll-circle">Scroll Down • Scroll Down • </textPath>
         </text>
       </motion.svg>

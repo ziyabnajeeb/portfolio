@@ -51,9 +51,9 @@ export function HeroContent({ hero, siteSettings }: HeroContentProps) {
           </AnimatePresence>
         )}
       </div>
-      <p className="mt-8 max-w-xl text-base leading-7 text-muted-foreground sm:text-lg">
+      {/* <p className="mt-8 max-w-xl text-base leading-7 text-muted-foreground sm:text-lg">
         {hero.summary}
-      </p>
+      </p> */}
       {hero.ctas && hero.ctas.length > 0 && <HeroActions ctas={hero.ctas} className="mt-10" />}
       {siteSettings?.socialLinks && siteSettings.socialLinks.length > 0 && (
         <HeroSocials links={siteSettings.socialLinks} className="mt-10" />

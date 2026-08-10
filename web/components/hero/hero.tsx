@@ -1,7 +1,7 @@
 import { sanityFetch, heroQuery, siteSettingsQuery } from "@/lib/sanity";
 import { Container } from "@/components/layout";
 import { HeroContent } from "./hero-content";
-import { HeroDecoration } from "./hero-decoration";
+import { HeroBackgroundSlider } from "./hero-background-slider";
 import { HeroScrollCue } from "./hero-scroll-cue";
 import type { Hero as HeroData, SiteSettings } from "@/types";
 
@@ -15,7 +15,7 @@ export async function Hero() {
 
   return (
     <section className="relative overflow-hidden">
-      <HeroDecoration />
+      <HeroBackgroundSlider />
       <Container className="relative flex min-h-[85vh] flex-col justify-center py-28 md:py-36">
         <HeroContent hero={hero} siteSettings={siteSettings} />
       </Container>
