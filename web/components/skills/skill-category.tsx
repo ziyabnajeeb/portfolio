@@ -27,7 +27,7 @@ export function SkillCategory({ category }: SkillCategoryProps) {
         </h3>
       </div>
       <motion.div
-        className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2"
+        className="mt-6 flex flex-wrap gap-x-6 gap-y-8"
         initial={reduceMotion ? undefined : "hidden"}
         whileInView={reduceMotion ? undefined : "visible"}
         viewport={{ once: true, margin: "-40px" }}

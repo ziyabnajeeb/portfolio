@@ -174,11 +174,7 @@ const skillList = [
   { name: 'Next.js', icon: 'nextjs', category: 'skillCategory-frontend' },
   { name: 'TypeScript', icon: 'typescript', category: 'skillCategory-frontend' },
   { name: 'JavaScript', icon: 'javascript', category: 'skillCategory-frontend' },
-  { name: 'HTML5', icon: 'html5', category: 'skillCategory-frontend' },
-  { name: 'CSS3', icon: 'css3', category: 'skillCategory-frontend' },
-  { name: 'Sass/SCSS', icon: 'sass', category: 'skillCategory-frontend' },
   { name: 'Tailwind CSS', icon: 'tailwindcss', category: 'skillCategory-frontend' },
-  { name: 'Material UI', icon: 'materialui', category: 'skillCategory-frontend' },
   { name: 'React Bootstrap', icon: 'bootstrap', category: 'skillCategory-frontend' },
   // Backend
   { name: 'Node.js', icon: 'nodejs', category: 'skillCategory-backend' },
@@ -191,8 +187,6 @@ const skillList = [
   { name: 'Illustrator', icon: 'illustrator', category: 'skillCategory-design-tools' },
   // Tools & Workflow
   { name: 'Git', icon: 'git', category: 'skillCategory-tools' },
-  { name: 'Webpack', icon: 'webpack', category: 'skillCategory-tools' },
-  { name: 'npm', icon: 'npm', category: 'skillCategory-tools' },
   { name: 'GSAP', icon: 'gsap', category: 'skillCategory-tools' },
 ]
 const skillRanks = generateRanks(skillList.length)
