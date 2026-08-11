@@ -9,10 +9,17 @@ import {
   SiExpress,
   SiMongodb,
   SiGit,
-  SiGreensock,
 } from "react-icons/si";
 import { FaSalesforce } from "react-icons/fa6";
 import { Icons } from "@/components/icons";
+import {
+  PhotoshopIcon,
+  PHOTOSHOP_VIEWBOX,
+  IllustratorIcon,
+  ILLUSTRATOR_VIEWBOX,
+  GsapMascotIcon,
+  GSAP_VIEWBOX,
+} from "./brand-icons";
 
 interface SkillIconProps {
   icon: string;
@@ -45,7 +52,11 @@ export function SkillIcon({ icon, className, color }: SkillIconProps) {
     case "git":
       return <SiGit className={className} color={color} />;
     case "gsap":
-      return <SiGreensock className={className} color={color} />;
+      return <GsapMascotIcon viewBox={GSAP_VIEWBOX} className={className} />;
+    case "photoshop":
+      return <PhotoshopIcon viewBox={PHOTOSHOP_VIEWBOX} className={className} />;
+    case "illustrator":
+      return <IllustratorIcon viewBox={ILLUSTRATOR_VIEWBOX} className={className} />;
     default:
       return <Icons.design className={className} style={{ color }} />;
   }
@@ -65,7 +76,7 @@ const SKILL_COLORS: Record<string, string> = {
   photoshop: "#31A8FF",
   illustrator: "#FF9A00",
   git: "#F05032",
-  gsap: "#88CE02",
+  gsap: "#8AC640",
 };
 
 export function getSkillColor(icon: string): string {
