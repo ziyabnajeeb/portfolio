@@ -6,6 +6,7 @@ import type { SkillCategory as SkillCategoryData } from "@/types";
 
 interface SkillCategoryProps {
   category: SkillCategoryData;
+  className?: string;
 }
 
 const containerVariants = {
@@ -15,11 +16,11 @@ const containerVariants = {
   },
 };
 
-export function SkillCategory({ category }: SkillCategoryProps) {
+export function SkillCategory({ category, className }: SkillCategoryProps) {
   const reduceMotion = useReducedMotion();
 
   return (
-    <div>
+    <div className={className}>
       <div className="flex items-center gap-3">
         <span className="h-px w-6 bg-primary" aria-hidden="true" />
         <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
