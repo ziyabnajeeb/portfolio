@@ -1,14 +1,14 @@
 import { sanityFetch, skillCategoriesQuery } from "@/lib/sanity";
 import { Section, SectionHeader } from "@/components/layout";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
-import { SkillCategory } from "./skill-category";
+import { SkillsGrid } from "./skills-grid";
 import type { SkillCategory as SkillCategoryData } from "@/types";
 
 export async function Skills() {
   const categories = await sanityFetch<SkillCategoryData[]>(skillCategoriesQuery);
-  const visibleCategories = categories?.filter((category) => category.skills.length > 0) ?? [];
+  const skills = categories?.flatMap((category) => category.skills) ?? [];
 
-  if (visibleCategories.length === 0) return null;
+  if (skills.length === 0) return null;
 
   return (
     <Section id="skills">
@@ -17,11 +17,7 @@ export async function Skills() {
           title="Skills & Expertise"
           description="Technologies and tools I use to build production-ready software."
         />
-        <div className="mt-12 columns-1 gap-x-8 sm:columns-2 lg:columns-3">
-          {visibleCategories.map((category) => (
-            <SkillCategory key={category._id} category={category} className="mb-10 break-inside-avoid" />
-          ))}
-        </div>
+        <SkillsGrid skills={skills} />
       </ScrollReveal>
     </Section>
   );

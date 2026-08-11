@@ -37,7 +37,7 @@ export function SkillCard({ skill }: SkillCardProps) {
             cy="40"
             r={RING_RADIUS}
             fill="none"
-            strokeWidth="2"
+            strokeWidth="5.5"
             className="stroke-border"
           />
           <circle
@@ -46,7 +46,7 @@ export function SkillCard({ skill }: SkillCardProps) {
             r={RING_RADIUS}
             fill="none"
             stroke={color}
-            strokeWidth="2.5"
+            strokeWidth="5.5"
             strokeLinecap="round"
             strokeDasharray={RING_CIRCUMFERENCE}
             strokeDashoffset={RING_CIRCUMFERENCE * (1 - RING_ARC_RATIO)}
