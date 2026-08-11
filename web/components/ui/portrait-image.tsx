@@ -9,6 +9,7 @@ interface PortraitImageProps {
   size?: number;
   priority?: boolean;
   className?: string;
+  aspectRatio?: "square" | "portrait";
 }
 
 function getInitials(name: string) {
@@ -20,19 +21,30 @@ function getInitials(name: string) {
     .join("");
 }
 
-export function PortraitImage({ image, name, size = 320, priority = false, className }: PortraitImageProps) {
+export function PortraitImage({
+  image,
+  name,
+  size = 320,
+  priority = false,
+  className,
+  aspectRatio = "portrait",
+}: PortraitImageProps) {
   const hasImage = Boolean(image?.asset?._ref);
+  const isPortrait = aspectRatio === "portrait";
+  const width = size * 2;
+  const height = isPortrait ? Math.round(width * 1.25) : width;
 
   return (
     <div
       className={cn(
-        "relative aspect-square w-full overflow-hidden rounded-2xl border bg-muted",
+        "relative w-full overflow-hidden rounded-2xl border bg-muted",
+        isPortrait ? "aspect-4/5" : "aspect-square",
         className
       )}
     >
       {hasImage && image ? (
         <Image
-          src={urlFor(image).width(size * 2).height(size * 2).fit("crop").url()}
+          src={urlFor(image).width(width).height(height).fit("crop").url()}
           alt={image.alt ?? name}
           fill
           priority={priority}
