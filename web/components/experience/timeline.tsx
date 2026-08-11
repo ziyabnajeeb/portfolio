@@ -8,7 +8,16 @@ interface TimelineProps {
 
 export function Timeline({ experiences }: TimelineProps) {
   return (
-    <Accordion type="multiple" defaultValue={experiences.map((experience) => experience._id)}>
+    <Accordion
+      type="single"
+      collapsible
+      defaultValue={experiences[0]?._id ?? ""}
+      className="relative space-y-6"
+    >
+      <div
+        aria-hidden="true"
+        className="absolute top-6 bottom-6 left-6 hidden w-px bg-border sm:block"
+      />
       {experiences.map((experience) => (
         <TimelineItem key={experience._id} experience={experience} />
       ))}

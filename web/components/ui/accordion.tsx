@@ -51,12 +51,7 @@ Accordion.displayName = "Accordion";
 
 const AccordionItemBase = React.forwardRef<HTMLDivElement, AccordionItemProps>(
   ({ className, value, children, ...props }, ref) => (
-    <div
-      ref={ref}
-      className={cn("border-b", className)}
-      data-value={value}
-      {...props}
-    >
+    <div ref={ref} className={className} data-value={value} {...props}>
       {children}
     </div>
   )
@@ -106,15 +101,28 @@ const AccordionTrigger = React.forwardRef<HTMLButtonElement, React.HTMLAttribute
         data-state={isOpen ? "open" : "closed"}
         onClick={handleClick}
         className={cn(
-          "flex w-full items-center justify-between py-4 text-sm font-medium transition-all hover:no-underline [&[data-state=open]>svg]:rotate-180",
+          "group flex w-full items-center justify-between gap-4 py-5 text-left text-sm font-medium transition-all hover:no-underline",
           className
         )}
         {...props}
       >
         {children}
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4 shrink-0 transition-transform duration-200">
-          <polyline points="6 9 12 15 18 9" />
-        </svg>
+        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors duration-200 group-hover:border-primary/50 group-hover:text-primary group-data-[state=open]:border-primary group-data-[state=open]:bg-primary group-data-[state=open]:text-primary-foreground">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="h-4 w-4 transition-transform duration-300 group-data-[state=open]:rotate-180"
+          >
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </span>
       </button>
     );
   }

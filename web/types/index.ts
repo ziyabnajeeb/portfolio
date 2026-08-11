@@ -79,6 +79,13 @@ export interface Experience {
   orderRank: string
 }
 
+export interface Education {
+  _id: string
+  degree: string
+  institution: string
+  orderRank: string
+}
+
 export interface Skill {
   _id: string
   name: string

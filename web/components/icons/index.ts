@@ -56,6 +56,8 @@ import {
   Tags,
   Bookmark,
   Share2,
+  Briefcase,
+  GraduationCap,
 } from "lucide-react";
 
 export const Icons = {
@@ -117,6 +119,8 @@ export const Icons = {
   tags: Tags,
   bookmark: Bookmark,
   share2: Share2,
+  briefcase: Briefcase,
+  graduationCap: GraduationCap,
 } as const;
 
 export type IconName = keyof typeof Icons;

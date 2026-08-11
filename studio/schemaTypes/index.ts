@@ -3,6 +3,7 @@ import { hero } from './documents/hero'
 import { about } from './documents/about'
 import { seo } from './documents/seo'
 import { experience } from './documents/experience'
+import { education } from './documents/education'
 import { project } from './documents/project'
 import { skillCategory } from './documents/skillCategory'
 import { skill } from './documents/skill'
@@ -19,6 +20,7 @@ export const schemaTypes = [
   seo,
   // Collections
   experience,
+  education,
   project,
   skillCategory,
   skill,

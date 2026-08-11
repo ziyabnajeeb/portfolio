@@ -9,7 +9,7 @@ const SINGLETON_ITEMS: { id: string; title: string; type: string }[] = [
   { id: 'seo', title: 'SEO', type: 'seo' },
 ]
 
-const ORDERABLE_TYPES = new Set(['experience', 'project', 'skillCategory', 'skill'])
+const ORDERABLE_TYPES = new Set(['experience', 'education', 'project', 'skillCategory', 'skill'])
 
 export const structure: StructureResolver = (S, context) =>
   S.list()
@@ -31,6 +31,7 @@ export const structure: StructureResolver = (S, context) =>
         ),
       S.divider(),
       orderableDocumentListDeskItem({ type: 'experience', title: 'Experience', S, context }),
+      orderableDocumentListDeskItem({ type: 'education', title: 'Education', S, context }),
       orderableDocumentListDeskItem({ type: 'project', title: 'Projects', S, context }),
       orderableDocumentListDeskItem({ type: 'skillCategory', title: 'Skill Categories', S, context }),
       orderableDocumentListDeskItem({ type: 'skill', title: 'Skills', S, context }),

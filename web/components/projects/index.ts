@@ -1,4 +1,3 @@
-export { ProjectsCarousel } from './projects-carousel';
 export { ProjectsGrid } from './projects-grid';
 export { ProjectCard } from './project-card';
 export { ProjectHero } from './project-hero';

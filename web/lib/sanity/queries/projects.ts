@@ -14,8 +14,6 @@ const projectCardFields = groq`
   publishedDate
 `
 
-export const featuredProjectsQuery = groq`*[_type == "project" && featured == true] | order(orderRank asc){${projectCardFields}}`
-
 export const allProjectsQuery = groq`*[_type == "project"] | order(orderRank asc){${projectCardFields}}`
 
 export const projectSlugsQuery = groq`*[_type == "project"]{"slug": slug.current}`
