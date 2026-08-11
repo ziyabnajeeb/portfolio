@@ -17,7 +17,7 @@ export async function Skills() {
           title="Skills & Expertise"
           description="Technologies and tools I use to build production-ready software."
         />
-        <div className="mt-12 grid grid-cols-1 gap-10">
+        <div className="mt-12 grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
           {visibleCategories.map((category) => (
             <SkillCategory key={category._id} category={category} />
           ))}
