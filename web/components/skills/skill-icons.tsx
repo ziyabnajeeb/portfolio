@@ -12,6 +12,7 @@ import {
 } from "react-icons/si";
 import { FaSalesforce } from "react-icons/fa6";
 import { Icons } from "@/components/icons";
+import { cn } from "@/lib/utils";
 import {
   PhotoshopIcon,
   PHOTOSHOP_VIEWBOX,
@@ -48,17 +49,17 @@ export function SkillIcon({ icon, className, color }: SkillIconProps) {
     case "mongodb":
       return <SiMongodb className={className} color={color} />;
     case "salesforce":
-      return <FaSalesforce className={className} color={color} />;
+      return <FaSalesforce className={cn(className, "h-7 w-7")} color={color} />;
     case "git":
-      return <SiGit className={className} color={color} />;
+      return <SiGit className={cn(className, "h-7 w-7")} color={color} />;
     case "gsap":
-      return <GsapMascotIcon viewBox={GSAP_VIEWBOX} className={className} />;
+      return <GsapMascotIcon viewBox={GSAP_VIEWBOX} className={cn(className, "h-7 w-7")} />;
     case "photoshop":
-      return <PhotoshopIcon viewBox={PHOTOSHOP_VIEWBOX} className={className} />;
+      return <PhotoshopIcon viewBox={PHOTOSHOP_VIEWBOX} className={cn(className, "h-7 w-7")} />;
     case "illustrator":
-      return <IllustratorIcon viewBox={ILLUSTRATOR_VIEWBOX} className={className} />;
+      return <IllustratorIcon viewBox={ILLUSTRATOR_VIEWBOX} className={cn(className, "h-7 w-7")} />;
     default:
-      return <Icons.design className={className} style={{ color }} />;
+      return <Icons.design className={cn(className, "h-7 w-7")} style={{ color }} />;
   }
 }
 

@@ -1,32 +1,30 @@
-import * as React from "react";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
-import { socials } from "@/lib/constants/socials";
+import { FooterSocialIcon } from "./footer-social-icon";
+import type { SocialLink } from "@/types";
 
-export type FooterSocialsProps = React.HTMLAttributes<HTMLElement>;
+interface FooterSocialsProps {
+  socialLinks?: SocialLink[];
+}
 
-const FooterSocials = React.forwardRef<HTMLElement, FooterSocialsProps>(
-  ({ className, ...props }, ref) => (
-    <nav
-      ref={ref}
-      className={cn("flex items-center gap-4", className)}
-      {...props}
-    >
-      {socials.map((social) => (
+export function FooterSocials({ socialLinks }: FooterSocialsProps) {
+  const links = (socialLinks ?? []).filter((link) => link.platform !== "email");
+
+  if (links.length === 0) return null;
+
+  return (
+    <div className="flex items-center gap-2">
+      {links.map((link) => (
         <Link
-          key={social.href}
-          href={social.href}
+          key={link.url}
+          href={link.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-muted-foreground transition-colors hover:text-foreground"
-          aria-label={social.label}
+          aria-label={link.platform}
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary/50 hover:text-primary"
         >
-          {social.label}
+          <FooterSocialIcon platform={link.platform} className="h-4 w-4" />
         </Link>
       ))}
-    </nav>
-  )
-);
-FooterSocials.displayName = "FooterSocials";
-
-export { FooterSocials };
+    </div>
+  );
+}

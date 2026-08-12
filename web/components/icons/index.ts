@@ -1,7 +1,5 @@
 import {
-  GitBranch,
   Link,
-  X,
   Mail,
   Phone,
   MapPin,
@@ -59,11 +57,13 @@ import {
   Briefcase,
   GraduationCap,
 } from "lucide-react";
+import { SiGithub, SiX } from "react-icons/si";
+import { FaLinkedin } from "react-icons/fa6";
 
 export const Icons = {
-  github: GitBranch,
-  linkedin: Link,
-  x: X,
+  github: SiGithub,
+  linkedin: FaLinkedin,
+  x: SiX,
   mail: Mail,
   phone: Phone,
   mapPin: MapPin,
