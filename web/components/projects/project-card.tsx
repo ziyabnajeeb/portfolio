@@ -1,8 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { urlFor } from "@/lib/sanity";
-import { Badge } from "@/components/ui/badge";
-import { PROJECT_CATEGORY_LABELS } from "@/lib/constants/projects";
+import { PROJECT_CATEGORY_LABELS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import type { ProjectCard as ProjectCardData } from "@/types";
 
@@ -10,48 +9,50 @@ interface ProjectCardProps {
   project: ProjectCardData;
   tabIndex?: number;
   priority?: boolean;
+  banner?: boolean;
   className?: string;
 }
 
-export function ProjectCard({ project, tabIndex, priority = false, className }: ProjectCardProps) {
-  const year = project.publishedDate ? new Date(project.publishedDate).getFullYear() : null;
+function formatDate(date?: string) {
+  if (!date) return null;
+  return new Date(date)
+    .toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })
+    .toUpperCase();
+}
+
+export function ProjectCard({ project, tabIndex, priority = false, banner = false, className }: ProjectCardProps) {
+  const date = formatDate(project.publishedDate);
 
   return (
     <Link
       href={`/projects/${project.slug}`}
       tabIndex={tabIndex}
       className={cn(
-        "group block h-full overflow-hidden rounded-xl border bg-card transition-shadow hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+        "group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
         className
       )}
     >
-      <div className="relative aspect-[3/2] overflow-hidden bg-muted">
+      <div className={cn("relative overflow-hidden rounded-2xl bg-muted", banner ? "aspect-21/9" : "aspect-4/3")}>
         <Image
-          src={urlFor(project.thumbnail).width(800).height(534).fit("crop").url()}
+          src={urlFor(project.thumbnail).width(banner ? 1600 : 800).height(banner ? 686 : 600).fit("crop").url()}
           alt={project.thumbnail.alt ?? project.title}
           fill
           priority={priority}
-          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-          className="object-cover transition-transform duration-300 group-hover:scale-105"
+          sizes={
+            banner
+              ? "(min-width: 640px) 100vw, 100vw"
+              : "(min-width: 640px) 50vw, 100vw"
+          }
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
       </div>
-      <div className="p-5">
-        <div className="flex items-center justify-between gap-2">
-          <Badge variant="secondary">{PROJECT_CATEGORY_LABELS[project.category]}</Badge>
-          {year && <span className="text-xs text-muted-foreground">{year}</span>}
-        </div>
-        <h3 className="mt-3 text-lg font-semibold text-foreground">{project.title}</h3>
-        <p className="mt-1.5 line-clamp-2 text-sm text-muted-foreground">{project.excerpt}</p>
-        {project.technologies.length > 0 && (
-          <div className="mt-4 flex flex-wrap gap-1.5">
-            {project.technologies.slice(0, 4).map((tech) => (
-              <Badge key={tech} variant="outline" className="text-xs">
-                {tech}
-              </Badge>
-            ))}
-          </div>
-        )}
+      <div className="mt-4 flex items-center gap-3 text-xs font-semibold tracking-widest uppercase">
+        <span className="text-primary">{PROJECT_CATEGORY_LABELS[project.category]}</span>
+        {date && <span className="text-muted-foreground">{date}</span>}
       </div>
+      <h3 className="mt-1.5 text-xl font-bold tracking-tight text-foreground transition-colors group-hover:text-primary sm:text-2xl">
+        {project.title}
+      </h3>
     </Link>
   );
 }

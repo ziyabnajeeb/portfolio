@@ -21,3 +21,4 @@ export { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from './
 export { PortableText } from './portable-text';
 export { PortraitImage } from './portrait-image';
 export { ScrollReveal } from './scroll-reveal';
+export { WireframeDecoration } from './wireframe-decoration';
