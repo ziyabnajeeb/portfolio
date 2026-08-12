@@ -64,6 +64,14 @@ export interface About {
   stats?: Stat[]
 }
 
+export interface ExperienceProject {
+  _key: string
+  name: string
+  role?: string
+  technologies?: string[]
+  description: PortableTextBlock[]
+}
+
 export interface Experience {
   _id: string
   company: string
@@ -73,6 +81,7 @@ export interface Experience {
   location?: string
   description?: PortableTextBlock[]
   technologies?: string[]
+  projects?: ExperienceProject[]
   startDate: string
   endDate?: string
   current: boolean

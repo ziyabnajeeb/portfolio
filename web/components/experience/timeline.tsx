@@ -11,7 +11,7 @@ export function Timeline({ experiences }: TimelineProps) {
     <Accordion
       type="single"
       collapsible
-      defaultValue={experiences[0]?._id ?? ""}
+      defaultValue=""
       className="relative space-y-6"
     >
       <div

@@ -42,6 +42,32 @@ function blocks(...texts) {
   return texts.map(block)
 }
 
+function bulletBlock(text) {
+  return {
+    _type: 'block',
+    _key: key(),
+    style: 'normal',
+    listItem: 'bullet',
+    level: 1,
+    markDefs: [],
+    children: [{ _type: 'span', _key: key(), text, marks: [] }],
+  }
+}
+
+function bulletBlocks(...texts) {
+  return texts.map(bulletBlock)
+}
+
+function headingBlock(text) {
+  return {
+    _type: 'block',
+    _key: key(),
+    style: 'h4',
+    markDefs: [],
+    children: [{ _type: 'span', _key: key(), text, marks: [] }],
+  }
+}
+
 function ref(id) {
   return { _type: 'reference', _ref: id }
 }
@@ -131,24 +157,126 @@ const experienceRoyalCyber = {
   _type: 'experience',
   company: 'Royal Cyber Inc.',
   companyDescription:
-    'A globally recognized, award-winning technology partner helping companies imagine, execute, and accelerate their digital transformation journey for over 20 years.',
+    'Royal Cyber Inc. is a globally recognized award-winning technology partner that is helping companies imagine, execute, and accelerate their digital transformation journey for the past 20 years.',
   role: 'Senior UI Frontend Developer',
   location: 'Karachi, Pakistan',
-  description: blocks(
-    'Leading frontend development across multiple client engagements, specializing in React.js, Next.js, and Salesforce Commerce Cloud (SFRA/SiteGenesis). Responsible for building scalable, responsive UIs, optimizing storefront performance, and delivering full-stack features across the MERN stack.'
-  ),
-  technologies: [
-    'React',
-    'Next.js',
-    'TypeScript',
-    'JavaScript (ES6)',
-    'Salesforce SFRA',
-    'Tailwind CSS',
-    'Node.js',
-    'Express.js',
-    'MongoDB',
-    'jQuery',
-    'SCSS',
+  projects: [
+    {
+      _key: key(),
+      _type: 'experienceProject',
+      name: 'Acima',
+      technologies: ['React.js', 'Chakra UI', 'SFCC Composable Architecture'],
+      description: bulletBlocks(
+        'Developed UI components for key features such as authentication, dashboard, and payment pages.',
+        'Worked with a shared design system to maintain consistency across the application.',
+        'Implemented data fetching and state management using TanStack Query.',
+        'Built reusable custom hooks to simplify logic and improve code organization.',
+        'Integrated APIs and handled server-side rendering using shopper context.',
+        'Contributed to Page Designer-based components within the SFCC ecosystem.',
+        'Followed a modular approach to keep the codebase clean and maintainable.'
+      ),
+    },
+    {
+      _key: key(),
+      _type: 'experienceProject',
+      name: 'Rent-A-Center',
+      technologies: ['React.js', 'Chakra UI', 'SFCC Composable Architecture'],
+      description: bulletBlocks(
+        'Developed and maintained UI components using React.js.',
+        'Implemented responsive layouts to ensure compatibility across devices.',
+        'Worked with Chakra UI for consistent styling and design.',
+        'Collaborated with the team to integrate frontend with existing SFCC composable architecture.',
+        'Assisted in improving user experience and interface performance.',
+        'Followed clean and modular coding practices for maintainability.'
+      ),
+    },
+    {
+      _key: key(),
+      _type: 'experienceProject',
+      name: 'White-Cap',
+      technologies: ['React.js', 'TypeScript', 'Tailwind CSS', 'Shadcn UI', 'GSAP', 'Optimizely'],
+      description: bulletBlocks(
+        'Developed the White-Cap project, focusing on dynamic image handling and interactive user experience.',
+        'Implemented animated markers on images, categorized to provide contextual information based on user interactions.',
+        'Utilized GSAP (GreenSock Animation Platform) to create smooth animations for the markers, enhancing visual appeal and engagement.',
+        'Employed React.js with TypeScript to ensure type safety and maintainable code structure.',
+        'Designed a responsive layout using Tailwind CSS and Shadcn UI, ensuring a seamless user experience across various devices.',
+        'Enabled image switching functionality, allowing users to easily toggle between images while corresponding markers update accordingly.'
+      ),
+    },
+    {
+      _key: key(),
+      _type: 'experienceProject',
+      name: 'Brambleberry',
+      technologies: ['Salesforce SFRA', 'jQuery', 'JavaScript', 'HTML5', 'SCSS', 'Bootstrap 4', 'ISML', 'Webpack'],
+      description: bulletBlocks(
+        'Designed and developed various modules of eCommerce site using SFCC - SFRA Architecture, jQuery, JavaScript, HTML 5, SCSS, and Bootstrap4.',
+        'Implemented Google AVS 2.0, and implemented it as a reusable component so it can be used for other pages like the checkout page, account page.',
+        'Implemented Google reCaptcha, and made it useable for multiple instances.',
+        'Followed best functional JavaScript practices in writing code.',
+        'Handling jQuery tasks for a better viewing experience with mixing the ES6 with jQuery.',
+        'Worked on Home Page, Product, Cart, Checkout, Sort & Filter, Article, Mobile Navigation, and Quick View modules from scratch on ISML, SCSS and ClientSide.',
+        'Worked on Page Designer and created required pages on Page Designer.',
+        'Implemented Npm and Webpack setup for building and automating processes such as linting, and prod/dev environment. Working on ISML templating engine.',
+        'Node version upgrade from version 6 to version 14.'
+      ),
+    },
+    {
+      _key: key(),
+      _type: 'experienceProject',
+      name: 'Covid-19 Dashboard',
+      technologies: ['React', 'HTML5', 'JavaScript (ES6)', 'Tailwind CSS', 'Styled Components', 'Axios', 'Redux'],
+      description: bulletBlocks(
+        'Built an internal Covid-19 dashboard for Royal Cyber from scratch.',
+        'Developed the complete UI with React, HTML5, and JavaScript (ES6), styled with Tailwind CSS and Styled Components.',
+        'Used Axios to consume REST APIs.',
+        'Implemented Redux for state management.',
+        'Organized the component structure for scalability and maintainability.'
+      ),
+    },
+    {
+      _key: key(),
+      _type: 'experienceProject',
+      name: 'WinSupply Inc. – WinZone',
+      technologies: ['Angular', 'TypeScript', 'HTML5', 'Bootstrap', 'SCSS'],
+      description: bulletBlocks(
+        'Worked on UI development from scratch.',
+        'Developed UI using HTML5, Bootstrap (Flexgrid), and SCSS for responsive and visually appealing designs.',
+        'Implemented the frontend with Angular for building dynamic and scalable web applications.',
+        'Built and styled various components using Angular, TypeScript, SCSS, and Bootstrap.',
+        'Organized and maintained a clean component structure to ensure scalability and reusability.',
+        'Integrated REST APIs to fetch and display dynamic data seamlessly.',
+        'Optimized performance and usability by implementing lazy loading and modular design patterns.'
+      ),
+    },
+    {
+      _key: key(),
+      _type: 'experienceProject',
+      name: 'Aramark',
+      technologies: ['Angular', 'TypeScript', 'HTML5', 'Bootstrap', 'CSS', 'SCSS', 'jQuery', 'IBM WebSphere Portal'],
+      description: [
+        headingBlock('Education System'),
+        ...bulletBlocks(
+          'Developed a responsive UI using HTML5, CSS, Bootstrap, and jQuery for patient-centric educational content.',
+          'Ensured cross-browser compatibility and accessibility standards for diverse users.'
+        ),
+        headingBlock('Supply Chain / Marketplace'),
+        ...bulletBlocks(
+          'Built interactive and scalable components using Angular, TypeScript, and Bootstrap.',
+          'Integrated dynamic data from APIs to support procurement workflows and enhance user experience.'
+        ),
+        headingBlock('Menu Builder'),
+        ...bulletBlocks(
+          'Designed and developed an intuitive interface using HTML5, CSS, and jQuery for menu planning and customization.',
+          'Focused on delivering seamless navigation and improved functionality for patients and staff.'
+        ),
+        headingBlock('Collaboration & Optimization'),
+        ...bulletBlocks(
+          'Worked closely with backend teams to integrate the IBM WebSphere Portal, ensuring robust and reliable application performance.',
+          'Followed best coding practices to deliver reusable, modular, and maintainable code across all modules.'
+        ),
+      ],
+    },
   ],
   startDate: '2012-12-01',
   current: true,

@@ -9,6 +9,13 @@ export const experienceListQuery = groq`*[_type == "experience"] | order(orderRa
   location,
   description,
   technologies,
+  projects[]{
+    _key,
+    name,
+    role,
+    technologies,
+    description
+  },
   startDate,
   endDate,
   current,

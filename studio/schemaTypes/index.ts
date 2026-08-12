@@ -11,6 +11,7 @@ import { socialLink } from './objects/socialLink'
 import { cta } from './objects/cta'
 import { stat } from './objects/stat'
 import { galleryImage } from './objects/galleryImage'
+import { experienceProject } from './objects/experienceProject'
 
 export const schemaTypes = [
   // Singletons
@@ -29,6 +30,7 @@ export const schemaTypes = [
   cta,
   stat,
   galleryImage,
+  experienceProject,
 ]
 
 export const SINGLETON_TYPES = new Set(['siteSettings', 'hero', 'about', 'seo'])

@@ -1,11 +1,10 @@
 import Image from "next/image";
 import { AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import { PortableText } from "@/components/ui/portable-text";
-import { Badge } from "@/components/ui/badge";
 import { Icons } from "@/components/icons";
 import { urlFor } from "@/lib/sanity";
-import { getTechColor } from "@/lib/constants";
-import { cn } from "@/lib/utils";
+import { TechBadge } from "./tech-badge";
+import { ExperienceProject } from "./experience-project";
 import type { Experience as ExperienceData } from "@/types";
 
 interface TimelineItemProps {
@@ -58,33 +57,29 @@ export function TimelineItem({ experience }: TimelineItemProps) {
               {experience.location}
             </span>
           )}
-          {experience.description && experience.description.length > 0 && (
-            <PortableText value={experience.description} className="mt-3" />
+          {experience.companyDescription && (
+            <p className="mt-3 text-sm text-muted-foreground">{experience.companyDescription}</p>
           )}
-          {experience.technologies && experience.technologies.length > 0 && (
-            <div className="mt-5 flex flex-wrap gap-2">
-              {experience.technologies.map((tech) => {
-                const color = getTechColor(tech);
-                return (
-                  <Badge
-                    key={tech}
-                    variant="outline"
-                    className={cn("text-xs", !color && "text-muted-foreground")}
-                    style={
-                      color
-                        ? {
-                            color,
-                            borderColor: color,
-                            backgroundColor: color.startsWith("#") ? `${color}14` : undefined,
-                          }
-                        : undefined
-                    }
-                  >
-                    {tech}
-                  </Badge>
-                );
-              })}
+
+          {experience.projects && experience.projects.length > 0 ? (
+            <div className="mt-5 space-y-4">
+              {experience.projects.map((project) => (
+                <ExperienceProject key={project._key} project={project} />
+              ))}
             </div>
+          ) : (
+            <>
+              {experience.description && experience.description.length > 0 && (
+                <PortableText value={experience.description} className="mt-3" />
+              )}
+              {experience.technologies && experience.technologies.length > 0 && (
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {experience.technologies.map((tech) => (
+                    <TechBadge key={tech} tech={tech} />
+                  ))}
+                </div>
+              )}
+            </>
           )}
         </AccordionContent>
       </div>

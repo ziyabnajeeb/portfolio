@@ -49,12 +49,21 @@ export const experience = defineType({
       title: 'Description',
       type: 'array',
       of: [{ type: 'block' }],
+      description: 'Used when this role has no individual projects listed below.',
     }),
     defineField({
       name: 'technologies',
       title: 'Technologies',
       type: 'array',
       of: [{ type: 'string' }],
+      description: 'Used when this role has no individual projects listed below.',
+    }),
+    defineField({
+      name: 'projects',
+      title: 'Projects',
+      description: 'Named projects worked on during this role, each with its own tech stack and bullets.',
+      type: 'array',
+      of: [{ type: 'experienceProject' }],
     }),
     defineField({
       name: 'startDate',
